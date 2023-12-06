@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import { User } from './User.js';
 
 const PORT = 3000;
-const MONGO_URL = "mongodb+srv://marcos:marcos@cluster0.7ynbwt5.mongodb.net/Portafolio?retryWrites=true&w=majority";
+const MONGO_URL = "mongodb://localhost:27017/Portafolio";
 const app = express();
 
 app.use(bodyParser.json({extended: true}));

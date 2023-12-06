@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { User } from "./User.js";
 
 const seed = async () =>{
-    await mongoose.connect('mongodb+srv://marcos:marcos@cluster0.7ynbwt5.mongodb.net/Portafolio?retryWrites=true&w=majority');
+    await mongoose.connect('mongodb://localhost:27017/Portafolio');
 
 const info = {
     name: "Marcos Silva",
