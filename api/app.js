@@ -34,8 +34,8 @@ app.post('/api/profile/:id', async (req, res) => {
         user.year = year;
         user.description = description;
     }else if(type === "skill"){
-        const { title, description, path } = req.body;
-        user.skills.push({title, description, path});
+        const { title, description, path, skillIndex } = req.body;
+        user.skills[skillIndex] = {title, description, path};
     }else if(type === "hobby"){
         const { title, description, activities } = req.body;
         user.hobbies.push({title, description, activities});

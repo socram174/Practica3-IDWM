@@ -39,19 +39,19 @@ const info = {
             activities: [
                 {
                     title: "God of War",
-                    path: "/images/GOW.webp"
+                    path: "https://image.api.playstation.com/vulcan/img/rnd/202010/2217/LsaRVLF2IU2L1FNtu9d3MKLq.jpg"
                 },
                 {
                     title: "Fortnite",
-                    path: "/images/fortnite.png"
+                    path: "https://cdn2.unrealengine.com/fortnite-chapter-4-og-overview-page-key-art-bg-1920x1080-1fbc3a1c0297.jpg"
                 },
                 {
                     title: "Destiny 2",
-                    path: "/icons/Destiny2/icons8-destiny-2-100.svg"
+                    path: "https://images.contentstack.io/v3/assets/blte410e3b15535c144/bltfd59ef77fa3c5cc1/63d01595a5695963fc8be4ef/lfl-media-wallpaper-1-full.jpg"
                 },
                 {
                     title: "Warframe",
-                    path: "/icons/Warframe/icons8-warframe-96.svg"
+                    path: "https://www-static.warframe.com/images/longlanding/warframe-metacard.png"
                 }
             ]
         }
