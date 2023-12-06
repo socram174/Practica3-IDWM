@@ -8,6 +8,7 @@ export const EditModal = ({
   type,
   profile,
   getProfile,
+  selectedIndex
 }) => {
   const [name, setName] = useState(profile.name);
   const [email, setEmail] = useState(profile.email);
@@ -15,7 +16,25 @@ export const EditModal = ({
   const [year, setYear] = useState(profile.year);
   const [description, setDescription] = useState(profile.description);
 
-  const hideModal = () => setVisible(false);
+  const [title, setTitle] = useState(profile.skills[selectedIndex]?.title || "");
+  const [skillDescription, setSkillDescription] = useState(profile.skills[selectedIndex]?.description || "");
+  const [path, setPath] = useState(profile.skills[selectedIndex]?.path || "");
+
+  const hideModal = () => {
+    setVisible(false);
+  };
+
+    // Use useEffect to update state when the profile prop changes
+    useEffect(() => {
+      setName(profile.name);
+      setEmail(profile.email);
+      setCity(profile.city);
+      setYear(profile.year);
+      setDescription(profile.description);
+      setTitle(profile.skills[selectedIndex]?.title || "");
+      setSkillDescription(profile.skills[selectedIndex]?.description || "");
+      setPath(profile.skills[selectedIndex]?.path || "");
+    }, [profile, selectedIndex]);
 
   const editProfile = async () => {
     console.log(name, email, city, year, description);
@@ -34,6 +53,61 @@ export const EditModal = ({
         description,
       }),
     }); 
+    
+
+    const data = await response.json();
+
+    console.log(data);
+
+    getProfile();
+    setVisible(false);
+  };
+
+  const editSkill = async () => {
+    console.log(title, skillDescription, path);
+
+    const response = await fetch(`http://192.168.0.2:3000/api/profile/${profile._id}`,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: "skill",
+        title,
+        description: skillDescription,
+        path,
+        skillIndex: selectedIndex
+
+      }),
+    }); 
+    
+
+    const data = await response.json();
+
+    console.log(data);
+
+    getProfile();
+    setVisible(false);
+  };
+
+  const editHobbie = async () => {
+    console.log(title, skillDescription, path);
+
+    const response = await fetch(`http://192.168.0.2:3000/api/profile/${profile._id}`,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: "skill",
+        title,
+        description: skillDescription,
+        path,
+        skillIndex: selectedIndex
+
+      }),
+    }); 
+    
 
     const data = await response.json();
 
@@ -116,9 +190,36 @@ export const EditModal = ({
         onDismiss={() => {
           setVisible(false);
         }}
-        contentContainerStyle={containerStyle}
       >
-        <Text>Editar habilidades</Text>
+       <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <ScrollView>
+      <View style={containerStyle}>
+         <Text
+          style={{ textAlign: "center", marginBottom: 20, fontWeight: "bold" }}
+        >
+          EDICIÓN DE LAS TECNOLOGIAS
+        </Text>
+        <TextInput
+          label="Titulo"
+          value={title}
+          onChangeText={(title) => setTitle(title)}
+        />
+        <TextInput
+          label="Descripción"
+          value={skillDescription}
+          onChangeText={(description) => setSkillDescription(description)}
+        />
+        <TextInput
+          label="url"
+          value={path}
+          onChangeText={(path) => setPath(path)}
+        />
+
+        <Button onPress={editSkill} mode="contained">Confirmar</Button>
+        <Button onPress={hideModal}>Cancelar</Button>
+      </View>
+      </ScrollView>
+       </KeyboardAvoidingView>
       </Modal>
     );
   }
@@ -130,9 +231,31 @@ export const EditModal = ({
         onDismiss={() => {
           setVisible(false);
         }}
-        contentContainerStyle={containerStyle}
       >
-        <Text>Editar hobbies</Text>
+       <KeyboardAvoidingView  behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <ScrollView>
+      <View style={containerStyle}>
+         <Text
+          style={{ textAlign: "center", marginBottom: 20, fontWeight: "bold" }}
+        >
+          EDICIÓN DE LOS HOBBIES
+        </Text>
+        <TextInput
+          label="Titulo"
+          value={profile.hobbies[selectedIndex]?.title}
+          onChangeText={(title) => setTitle(title)}
+        />
+        <TextInput
+          label="Descripción"
+          value={profile.hobbies[selectedIndex]?.description}
+          onChangeText={(description) => setSkillDescription(description)}
+        />
+
+        <Button onPress={editHobbie} mode="contained">Confirmar</Button>
+        <Button onPress={hideModal}>Cancelar</Button>
+      </View>
+      </ScrollView>
+       </KeyboardAvoidingView>
       </Modal>
     );
   }
