@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, ScrollView, KeyboardAvoidingView, SafeAreaView } from "react-native";
 import { useState, useEffect } from "react";
 import { Modal, Button, Card, TextInput } from "react-native-paper";
+import { baseUrl } from "../config";
 
 export const EditModal = ({
   visible,
@@ -39,7 +40,7 @@ export const EditModal = ({
   const editProfile = async () => {
     console.log(name, email, city, year, description);
 
-    const response = await fetch(`http://192.168.0.2:3000/api/profile/${profile._id}`,{
+    const response = await fetch(`${baseUrl}/${profile._id}`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -66,7 +67,7 @@ export const EditModal = ({
   const editSkill = async () => {
     console.log(title, skillDescription, path);
 
-    const response = await fetch(`http://192.168.0.2:3000/api/profile/${profile._id}`,{
+    const response = await fetch(`${baseUrl}/${profile._id}`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -93,7 +94,7 @@ export const EditModal = ({
   const editHobbie = async () => {
     console.log(title, skillDescription, path);
 
-    const response = await fetch(`http://192.168.0.2:3000/api/profile/${profile._id}`,{
+    const response = await fetch(`${baseUrl}/${profile._id}`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json",

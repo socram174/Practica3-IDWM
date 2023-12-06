@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import { useState, useEffect } from "react";
 import { Portal, Avatar, Button, Card } from "react-native-paper";
 import { EditModal } from "../components/EditModal";
+import { baseUrl } from "../config";
 
 const LeftContent = (props) => <Avatar.Icon {...props} icon="account" />;
 
@@ -17,7 +18,7 @@ export const Profile = () => {
   const showModal = () => setVisible(true);
 
   const getProfile = async () => {
-    const response = await fetch("http://192.168.0.2:3000/api/profile");
+    const response = await fetch(baseUrl);
     const data = await response.json();
     setProfile(data);
   };
