@@ -14,22 +14,22 @@ const info = {
         {
             title: "React",
             description: "He ganado algo de experiencia en react gracias a proyectos personales y de la universidad.",
-            path: "/images/react.svg"
+            path: "https://react.dev/images/og-home.png"
         },
         {
             title: "Nodejs/express",
             description: "Este es el unico framework de backend que he utilizado hasta el momento.",
-            path: "/images/expressjs.svg"
+            path: "https://www.loginradius.com/blog/static/6ee159acf6c294342ec04f86aede5d14/701ee/coverImage.jpg"
         },
         {
             title: "MongoDB",
             description: "Es la base de datos que mas he usado despues de mysql. Para almacenar datos desde codigo hecho en javascript como codigo hecho en python para un scraper.",
-            path: "/images/mongodb.svg"
+            path: "https://www.datanami.com/wp-content/uploads/2023/06/mongodb-logo-vector-2022.png"
         },
         {
             title: "Python",
             description: "Tengo algo de experiencia haciendo web scraping para luego esa informacion guardarla en mongodb o mysql.",
-            path: "/images/python.svg"
+            path: "https://ipappg.edu.pe/blog/wp-content/uploads/2022/05/20160721020723_python-logo.webp"
         }
     ],
     hobbies: [
