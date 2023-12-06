@@ -20,11 +20,30 @@ app.get('/api/profile',async (req, res) => {
     res.status(200).send(user);
 });
 
-app.post('/api/profile', async (req, res) => {
+app.post('/api/profile/:id', async (req, res) => {
     
     const user = await User.findById(req.params.id);
 
     const { type } = req.body;
+
+    if(type === "personal"){
+        const { name, email, city, year, description } = req.body;
+        user.name = name;
+        user.email = email;
+        user.city = city;
+        user.year = year;
+        user.description = description;
+    }else if(type === "skill"){
+        const { title, description, path } = req.body;
+        user.skills.push({title, description, path});
+    }else if(type === "hobby"){
+        const { title, description, activities } = req.body;
+        user.hobbies.push({title, description, activities});
+    }
+
+    await user.save();
+
+    res.status(200).send({message: "Perfil actualizado correctamente"});
 });
 
 
