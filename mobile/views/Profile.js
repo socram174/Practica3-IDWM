@@ -41,6 +41,7 @@ export const Profile = () => {
       <ScrollView>
         <View style={styles.container}>
           <Text style={styles.text}>Mi portafolio</Text>
+          <Button onPress={getProfile} mode="contained">Actualizar</Button>
           <Card style={styles.card}>
             <Card.Title
               title="Información personal"
