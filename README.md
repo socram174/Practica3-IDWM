@@ -121,8 +121,4 @@ Para verificar su funcionamiento entrar a http://localhost:3000/api/profile o co
 
 ## POSTMAN
 
-Para la ruta delete primero puede usar la ruta get users para obtener algun id, luego en la ruta delete agregar el id de algun usuario para eliminarlo en el Path Variables llamado id.
-
-Para la ruta de edición debe cambiar el rut o dni para poder editar.
-
-Para la creacion debe cambiar el rut y/o correo, ya que ambos son unicos
+El caso de modificar una tecnologia el skillIndex es la posicion de la tecnologia en el array de tecnologias del usuario, por ejemplo si el usuario tiene 3 tecnologias y se quiere modificar la segunda, el skillIndex seria 1.
