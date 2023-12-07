@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "474cb88b-445f-4a41-90de-8a92b6f3ee06",
+		"name": "Rutas-practica3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16072155",
+		"_collection_link": "https://www.postman.com/gold-station-593555-1/workspace/practica3-idwm/collection/16072155-474cb88b-445f-4a41-90de-8a92b6f3ee06?action=share&source=collection_link&creator=16072155"
+	},
+	"item": [
+		{
+			"name": "Obtener todo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Store the token value in a collection variable called \"token\"\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.collectionVariables.set(\"id\", jsonData._id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar  info personal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Juan Robledo",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "juan@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Santiago",
+							"type": "text"
+						},
+						{
+							"key": "year",
+							"value": "2012",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Me gusta el desarrollo web",
+							"type": "text"
+						},
+						{
+							"key": "type",
+							"value": "personal",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/profile/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"profile",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar tecnologia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "skill",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "NuxtJS",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "nuxt con vue",
+							"type": "text"
+						},
+						{
+							"key": "path",
+							"value": "https://kinsta.com/wp-content/uploads/2022/05/nuxt-js-logo.jpeg",
+							"description": "una imagen png, jpg.",
+							"type": "text"
+						},
+						{
+							"key": "skillIndex",
+							"value": "0",
+							"description": "la posicion de la tecnologia a editar",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/profile/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"profile",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "profileId",
+			"value": ""
+		},
+		{
+			"key": "id",
+			"value": ""
+		}
+	]
+}
