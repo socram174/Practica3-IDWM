@@ -15,9 +15,10 @@ app.use(cors());
 
 app.get('/api/profile',async (req, res) => {
 
-    const user = await User.findOne({email: "marcos.silva@alumnos.ucn.cl"});
+    const user = await User.find();
 
-    res.status(200).send(user);
+
+    res.status(200).send(user[0]);
 });
 
 app.post('/api/profile/:id', async (req, res) => {
